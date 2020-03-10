@@ -1,0 +1,23 @@
+{% extends 'app/base_site.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="right_col" role="main">
+        <div class="clearfix"></div>
+          <div class="row">
+            <div class="col-md-5 col-sm-5 col-xs-5">
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        {{ form|crispy }}
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-info">Create Ticket</button>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+    </div>
+
+{% endblock content %}

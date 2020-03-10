@@ -21,3 +21,17 @@ G
 apps/dashboard/views.py,2\e\2e3c9d5b52bb886f0c82a821ed79f525a8edf1e5
 Q
 !djangoticketingsystem/settings.py,e\0\e03266d4bf279d249795a8dcb960eb4fb81b4563
+S
+#apps/app/templates/app/sidebar.html,8\4\841ad6283fb2d042897c869f9cbb0976adc6ec05
+H
+apps/ticketing/models.py,d\0\d0ad4e197e5c7ebbafbef635a6bfa269f5935566
+e
+5apps/ticketing/templates/ticketing/create_ticket.html,0\5\05c24a4eca54410adb598553bf447fc8975f2d61
+e
+5apps/ticketing/templates/ticketing/ticket_detail.html,e\3\e364109cf35d0ebafe95127f5036c180dcfc9516
+G
+apps/ticketing/forms.py,b\1\b1492113f1076836699d3adaa46bdbb7c17a37f4
+G
+apps/ticketing/views.py,c\9\c93fd5a4f4d454f3a7b3480b0c90ecd7ad759d0d
+^
+.apps/ticketing/templates/ticketing/ticket.html,5\b\5b2e32b44736fd62f5696e9046d17efe41ef3bd3
