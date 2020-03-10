@@ -1,22 +1,23 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import (
     ListView,
     DetailView,
     CreateView,
     UpdateView,
-    DeleteView
+    DeleteView,
+    FormView
 )
 from .models import Ticket
-from .forms import CreateTicketForm
+from .forms import CreateTicketForm, CreateCommentForm
 
 
 class TicketCreateView(CreateView):
     model = Ticket
     form_class = CreateTicketForm
-    template_name = 'ticketing/create_ticket.html'
+    template_name = 'create_ticket'
 
     def form_valid(self, form):
         form.instance.ticket_user = self.request.user
@@ -28,9 +29,44 @@ class TicketCreateView(CreateView):
             return True
         return False
 
+def ticket_detail(request, pk):
+    template_name = 'ticketing/ticket_detail.html'
+    ticket = get_object_or_404(Ticket, ticket_id=pk)
+    comments = ticket.comments
+    new_comment = None
 
-class TicketDetailView(DetailView):
-    model = Ticket
+    # Comment Posted
+    if request.method == 'POST':
+        comment_form = CreateCommentForm(data=request.POST)
+        if comment_form.is_valid():
+
+            # Create Comment Object but dont save to the database yet
+            new_comment = comment_form.save(commit=False)
+            # Assign the current ticket to the comment
+            new_comment.comment_ticket_id = ticket
+            # Save the comment to the database
+            new_comment.save()
+    else:
+        comment_form = CreateCommentForm
+
+    context = {'ticket': ticket,
+         'comments': comments,
+         'new_comment': new_comment,
+         'comment_form': comment_form}
+
+    return render(request, 'ticketing/ticket_detail.html', context)
+
+
+#class TicketDetailView(DetailView):
+#    model = Ticket
+#    template_name = 'ticketing/ticket_detail.html'
+#
+#    class CommentCreateVeiw(CreateView):
+#        form_class = CreateCommentForm
+#
+#        def form_valid(self, form):
+#            form.instance.ticket_user = self.request.user
+#            return super().form_valid(form) */
 
 
 class TicketListView(ListView):
