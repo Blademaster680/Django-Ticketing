@@ -38,3 +38,12 @@ class TicketListView(ListView):
     template_name = 'ticketing/ticket.html'
 
     # https://stackoverflow.com/questions/36950416/when-to-use-get-get-queryset-get-context-data-in-django
+    def get_queryset(self):
+        # Original qs
+        qs = super().get_queryset()
+        # Filter by a variable captured from url, for example
+        return qs
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        return data

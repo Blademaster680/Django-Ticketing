@@ -35,3 +35,5 @@ G
 apps/ticketing/views.py,c\9\c93fd5a4f4d454f3a7b3480b0c90ecd7ad759d0d
 ^
 .apps/ticketing/templates/ticketing/ticket.html,5\b\5b2e32b44736fd62f5696e9046d17efe41ef3bd3
+d
+4apps/ticketing/migrations/0002_auto_20200310_1138.py,1\9\1931c3a93c153d137070291b71a3580006118bb4

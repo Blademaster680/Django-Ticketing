@@ -32,14 +32,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                  {% for ticket in tickets %}
+                                  {% for ticket in ticket_list %}
                                     {% if forloop.counter0|divisibleby:2 %}
                                         <tr class="even pointer">
                                           <td class="a-center ">
                                             <input type="checkbox" class="flat" name="table_records">
                                           </td>
-                                          <td class=" ">{{ ticket.ticket_subject }}</td>
-                                          <td class=" ">{{ pass }} </td>
+                                          <td class=" ">{{ ticket.ticket_id }}</td>
+                                          <td class=" ">{{ ticket.ticket_subject }} </td>
                                           <td class=" last"><a href="#">View</a>
                                           </td>
                                         </tr>
@@ -48,8 +48,8 @@
                                           <td class="a-center ">
                                             <input type="checkbox" class="flat" name="table_records">
                                           </td>
-                                          <td class=" ">{{ pass }}</td>
-                                          <td class=" ">{{ pass }} </td>
+                                          <td class=" ">{{ ticket.ticket_id }}</td>
+                                          <td class=" ">{{ ticket.ticket_subject }} </td>
                                           <td class=" last"><a href="#">View</a>
                                           </td>
                                         </tr>
