@@ -40,7 +40,7 @@
                                           </td>
                                           <td class=" ">{{ ticket.ticket_id }}</td>
                                           <td class=" ">{{ ticket.ticket_subject }} </td>
-                                          <td class=" last"><a href="#">View</a>
+                                          <td class=" last"><a href="{% url 'ticket-detail' pk=ticket.ticket_id %}">View</a>
                                           </td>
                                         </tr>
                                     {% else %}
@@ -50,7 +50,7 @@
                                           </td>
                                           <td class=" ">{{ ticket.ticket_id }}</td>
                                           <td class=" ">{{ ticket.ticket_subject }} </td>
-                                          <td class=" last"><a href="#">View</a>
+                                          <td class=" last"><a href="{% url 'ticket-detail' pk=ticket.ticket_id %}">View</a>
                                           </td>
                                         </tr>
                                     {% endif %}
