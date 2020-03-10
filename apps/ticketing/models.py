@@ -1,6 +1,7 @@
 from datetime import datetime
 from django.contrib.auth.models import User
 from django.db import models
+from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.utils import timezone
 import random
@@ -21,5 +22,8 @@ class Ticket(models.Model):
         return self.ticket_subject
 
     def get_absolute_url(self):
-        return reverse('dashboard')
+        return reverse('ticket-detail', args=[self.ticket_id])
+
+
+
 
