@@ -44,6 +44,8 @@ def ticket_detail(request, pk):
             new_comment = comment_form.save(commit=False)
             # Assign the current ticket to the comment
             new_comment.ticket_id = ticket
+            # Assign the current user to the comment
+            new_comment.created_by = request.user.username
             # Save the comment to the database
             new_comment.save()
     else:
@@ -55,18 +57,6 @@ def ticket_detail(request, pk):
          'comment_form': comment_form}
 
     return render(request, 'ticketing/ticket_detail.html', context)
-
-
-#class TicketDetailView(DetailView):
-#    model = Ticket
-#    template_name = 'ticketing/ticket_detail.html'
-#
-#    class CommentCreateVeiw(CreateView):
-#        form_class = CreateCommentForm
-#
-#        def form_valid(self, form):
-#            form.instance.ticket_user = self.request.user
-#            return super().form_valid(form) */
 
 
 class TicketListView(ListView):
