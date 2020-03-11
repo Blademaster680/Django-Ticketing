@@ -26,14 +26,14 @@ class Ticket(models.Model):
 
 
 class Comment(models.Model):
-    comment_ticket_id = models.ForeignKey(Ticket, on_delete=models.CASCADE, related_name='comments')
-    comment_body = models.TextField()
-    comment_user = models.CharField(max_length=100)
-    comment_created = models.DateField(default=timezone.now)
+    ticket_id = models.ForeignKey(Ticket, on_delete=models.CASCADE, related_name='comments')
+    body = models.TextField()
+    created_by = models.CharField(max_length=100)
+    created_on = models.DateField(default=timezone.now)
 
     def __str__(self):
-        return self.comment_body
+        return self.body
 
     def get_absolute_url(self):
-        return reverse('ticket-detail', args=[self.comment_ticket_id])
+        return reverse('ticket-detail', args=[self.ticket_id])
 

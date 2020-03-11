@@ -21,25 +21,41 @@
         </div>
     </div>
 
-    <div class="col-md-6 col-sm-6 col-xs-6">
-        {% for comment in comments.all %}
-
-             <div class="x_panel">
-                <div class="x_title">
-                    <h2>Posted by: {{ comment.comment_user }}</h2>
-
-                    <div class="clearfix"></div>
-                    <p>{{ comment.comment_body }}</p>
-                </div>
-                <div class="x_content">
-
-
-                </div>
-            </div>
-
-        {% endfor %}
-    </div>
     <div class="col-md-12 col-sm-12 col-xs-12">
+        {% for comment in comments.all %}
+            {% if comment.created_by == ticket.ticket_user %}
+                <div class="col-md-7 col-sm-7 col-xs-7">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Posted by: {{ comment.created_by }}</h2>
+
+                            <div class="clearfix"></div>
+
+                        </div>
+                        <div class="x_content">
+                            <p>{{ comment.body }}</p>
+
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="col-md-7 col-sm-7 col-xs-7 pull-right">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Posted by: {{ comment.created_by }}</h2>
+
+                            <div class="clearfix"></div>
+
+                        </div>
+                        <div class="x_content">
+                            <p>{{ comment.body }}</p>
+
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        <div class="clearfix"></div>
+        {% endfor %}
         <div class="x_panel">
             <div class="x_title">
                 <h2>Add Comment</h2>

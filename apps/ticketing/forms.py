@@ -14,8 +14,8 @@ class CreateTicketForm(forms.ModelForm):
         fields = ['ticket_subject', 'ticket_body']
 
 class CreateCommentForm(forms.ModelForm):
-    comment_body = forms.Textarea()
+    body = forms.Textarea()
 
     class Meta:
         model = Comment
-        fields = ['comment_body']
+        fields = ['body']

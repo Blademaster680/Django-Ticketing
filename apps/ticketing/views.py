@@ -17,7 +17,7 @@ from .forms import CreateTicketForm, CreateCommentForm
 class TicketCreateView(CreateView):
     model = Ticket
     form_class = CreateTicketForm
-    template_name = 'create_ticket'
+    template_name = 'ticketing/create_ticket.html'
 
     def form_valid(self, form):
         form.instance.ticket_user = self.request.user
@@ -43,7 +43,7 @@ def ticket_detail(request, pk):
             # Create Comment Object but dont save to the database yet
             new_comment = comment_form.save(commit=False)
             # Assign the current ticket to the comment
-            new_comment.comment_ticket_id = ticket
+            new_comment.ticket_id = ticket
             # Save the comment to the database
             new_comment.save()
     else:
